@@ -14,7 +14,7 @@ public class OrderPage {
     }
 
     public void orderProduct() {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        var wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("email")));
         WebElement emailInput = driver.findElement(By.id("email"));
         emailInput.sendKeys("a12345@gmail.com");

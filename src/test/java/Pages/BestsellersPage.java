@@ -15,12 +15,12 @@ public class BestsellersPage {
         this.driver = driver;
     }
 
-    public void chooseCategory(String category) throws InterruptedException {
-        WebElement beautyHealthCategory = driver.findElement(By.xpath("//ul[@class=\"flyout-menu catalog-categories catalog-categories-tree\"]//*[text()=\"Beauty & Health\"]"));
-        WebElement cosmetics = driver.findElement(By.xpath("//a[@title=\"Cosmetics\"]"));
-        Actions action = new Actions(driver);
+    public void chooseCategory(){
+        var beautyHealthCategory = driver.findElement(By.xpath("//ul[@class=\"flyout-menu catalog-categories catalog-categories-tree\"]//*[text()=\"Beauty & Health\"]"));
+        var cosmetics = driver.findElement(By.xpath("//a[@title=\"Cosmetics\"]"));
+        var action = new Actions(driver);
         action.moveToElement(beautyHealthCategory).perform();
-        WebDriverWait wait = new WebDriverWait(driver,10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(cosmetics));
         cosmetics.click();
     }

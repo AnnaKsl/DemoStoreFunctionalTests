@@ -4,7 +4,7 @@ import Pages.*;
 import cucumber.api.java.en.*;
 import org.openqa.selenium.WebDriver;
 
-public class Test2IT {
+public class FIndAProductAndOrderItIT {
 
     WebDriver driver;
 
@@ -21,7 +21,7 @@ public class Test2IT {
         searchProductPage.searchProduct();
     }
 
-    @And("user can choose the product he wants form the list of products and make an order")
+    @And("user choose the product from the list of products and makes an order")
     public void user_can_choose_product() throws InterruptedException {
         ItemPage itemPage = new ItemPage(driver);
         itemPage.showItem();
@@ -36,7 +36,7 @@ public class Test2IT {
     }
 
     @Then("user provides his personal information for the delivery and chooses the delivery method")
-    public void user_provides_his_personal_info() throws InterruptedException {
+    public void user_provides_his_personal_info() {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.userDetails();
         ChooseDeliveryMethod chooseDeliveryMethod = new ChooseDeliveryMethod(driver);

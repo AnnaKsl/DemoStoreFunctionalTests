@@ -11,9 +11,10 @@ public class NewAccountPage {
     public NewAccountPage(WebDriver driver) {
         this.driver = driver;
     }
-    public void createNewAccount(String email, String password) throws InterruptedException {
-      WebDriverWait wait = new WebDriverWait(driver,10);
-      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class=\"btn  regular-main-button  submit\"]")));
+
+    public void createNewAccount(String email, String password) {
+        var wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class=\"btn  regular-main-button  submit\"]")));
         driver.findElement(By.id("login")).sendKeys(email);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("password-conf")).sendKeys(password);

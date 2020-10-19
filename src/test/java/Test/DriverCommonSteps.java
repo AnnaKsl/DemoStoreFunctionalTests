@@ -11,17 +11,16 @@ public class DriverCommonSteps {
     public WebDriver driver;
 
     @Before
-    public void initBrowser() {
+    public void setUp() {
         System.setProperty("webdriver.gecko.driver", "/home/tomek/Demostore_Test/src/test/resources/drivers/geckodriver.exe");
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         DriverManager.setDriver(driver);
-//ustalamy wartości drivera
     }
 
     @After
-    public void driverQuit() {
-    //    driver.quit();
+    public void tearDown() {
+      //  driver.quit();
     }
 }
