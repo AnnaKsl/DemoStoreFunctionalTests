@@ -12,10 +12,10 @@ public class FindTheCheapestWatchIT {
 
     @Given("^user has an open homepage of the store and searches for watch$")
     public void user_has_an_open_homepage_of_the_store_and_searches_for_watch() {
-        driver=DriverManager.getDriver();
+        driver = DriverManager.getDriver();
         MainPage mainPage = new MainPage(driver);
         mainPage.openMainPage();
-        SearchProductPage searchProductPage =new SearchProductPage(driver);
+        SearchProductPage searchProductPage = new SearchProductPage(driver);
         searchProductPage.searchProduct();
     }
 
@@ -23,13 +23,9 @@ public class FindTheCheapestWatchIT {
     public void user_see_all_the_search_results_and_selects_the_cheapest_watch() {
         ItemPage itemPage = new ItemPage(driver);
         itemPage.showResults();
-
-
-
     }
 
     @Then("^user orders the watch$")
-    public void user_orders_the_watch()  {
-
+    public void user_orders_the_watch() {
     }
 }

@@ -9,34 +9,45 @@ import org.openqa.selenium.WebDriver;
 
 public class CompareTheProductsIT {
 
-    WebDriver driver;
-    @Given("^user is on homepage of demostore$")
-    public void user_is_on_homepage_of_demostore() throws InterruptedException {
-        driver = DriverManager.getDriver();
+    WebDriver driver = DriverManager.getDriver();
+    ;
+    BestsellersPage bestsellersPage = new BestsellersPage(driver);
+    BeautyHealthPage beautyHealthPage = new BeautyHealthPage(driver);
+    ComparisonPage comparisonPage = new ComparisonPage(driver);
+
+    @Given("I am on bestsellers page")
+    public void user_is_on_homepage_of_demostore() {
         MainPage main = new MainPage(driver);
         main.openMainPage();
-
-
-    }
-
-    @Then("^user chooses bestsellers from hot deals submenu$")
-    public void user_goes_to_hot_deals_page_and_chooses_bestsellers() throws InterruptedException {
-        MainPage main = new MainPage(driver);
         main.goToBestsellers();
     }
 
-    @Then("^user chooses (.*) category and adds body oils to compare them$")
-    public void user_chooses_Beauty_Health_category_and_adds_body_oils_to_compare_them(String category) throws InterruptedException {
-        BestsellersPage bestsellersPage = new BestsellersPage(driver);
-        bestsellersPage.chooseCategory(category);
-        BeautyHealthPage beautyHealthPage = new BeautyHealthPage(driver);
-        beautyHealthPage.chooseProduct();
+    @When("i add 1st element to compare")
+    public void i_add_first_item_to_compare() {
+        bestsellersPage.chooseCategory();
+        beautyHealthPage.add_first_item_to_compare();
     }
 
-    @Then("user can compare products by weight")
-    public void user_can_compare_products_by_weight() throws InterruptedException {
-        ComparisonPage comparisonPage = new ComparisonPage(driver);
-        comparisonPage.compareTheProducts();
+    @And("i add second element to compare")
+    public void i_add_second_element_to_compare() {
+        beautyHealthPage.add_second_item_to_compare();
+    }
+
+    @Then("comparison list icon has 2 products")
+    public void comparison_list_icon_has_2_products() {
+        beautyHealthPage.assert_number_of_products_in_comparison();
+    }
+
+    @And("there are 2 elements in comparison table")
+    public void there_are_2_elements_in_the_comparison_table() {
+        comparisonPage.assert_number_of_elements_in_the_comparison_table();
+
+    }
+
+    @And("these are the chosen products")
+    public void these_are_the_chosen_products() {
+        comparisonPage.assert_titles_of_the_products();
+
     }
 
 

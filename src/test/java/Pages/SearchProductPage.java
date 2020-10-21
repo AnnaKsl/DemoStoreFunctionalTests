@@ -14,11 +14,11 @@ public class SearchProductPage {
     WebDriver driver;
 
     public SearchProductPage(WebDriver driver) {
-        this.driver=driver;
+        this.driver = driver;
     }
 
     public void searchProduct() {
-        WebElement searchField = driver.findElement(By.name("substring"));
+        var searchField = driver.findElement(By.name("substring"));
         searchField.sendKeys("watch");
         searchField.submit();
     }

@@ -27,23 +27,21 @@ public class MainPage {
         driver.get("https://demostore.x-cart.com/");
     }
 
-    public void goToBestsellers() throws InterruptedException {
-        Thread.sleep(3000);
-        //WebElement HotDeal = driver.findElement(By.xpath("//ul[@class=\"nav navbar-nav top-main-menu\"]//*[text()=\"Hot deals\"]"));
-        // Actions action = new Actions(driver);
-        //   action.moveToElement(HotDeal).perform();
-        WebElement element = driver.findElement(By.xpath("//*[text()=\"Bestsellers\"]"));
+    public void goToBestsellers() {
+        var element = driver.findElement(By.xpath("//*[text()=\"Bestsellers\"]"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("$(arguments[0]).click();", element);
 
     }
 
     public void pressSignButton() {
+        var wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header_bar-sign_in\"]//*[text()=\"Sign in / sign up\"]")));
         driver.findElement(By.xpath("//div[@class=\"header_bar-sign_in\"]//*[text()=\"Sign in / sign up\"]")).click();
     }
 
-    public void pressCreateNewAccount() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+    public void pressCreateNewAccount(){
+        var wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.create-account-link")));
         driver.findElement(By.cssSelector("a.create-account-link")).click();
     }

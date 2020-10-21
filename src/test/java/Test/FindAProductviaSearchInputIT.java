@@ -4,9 +4,8 @@ import Pages.*;
 import cucumber.api.java.en.*;
 import org.openqa.selenium.WebDriver;
 
-public class TestIT {
+public class FindAProductviaSearchInputIT {
     WebDriver driver;
-
 
     @Given("user has an open home page of DemoStore")
     public void user_has_an_open_home_page_of_DemoStore() {
@@ -22,10 +21,9 @@ public class TestIT {
     }
 
     @And("user chooses the product he needs from the products that was found")
-    public void user_chooses_the_product_he_needs(){
+    public void user_chooses_the_product_he_needs() {
         ItemPage itemPage = new ItemPage(driver);
         itemPage.showItem();
-        driver.quit();
     }
 
 }
